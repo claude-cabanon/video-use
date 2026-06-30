@@ -138,7 +138,7 @@ def render_markdown(entries: list[tuple[str, float, list[dict]]], silence_thresh
     lines: list[str] = []
     lines.append("# Packed transcripts")
     lines.append("")
-    lines.append(f"Phrase-level, grouped on silences ≥ {silence_threshold:.1f}s or speaker change.")
+    lines.append(f"Phrase-level, grouped on silences >= {silence_threshold:.1f}s or speaker change.")
     lines.append("Use `[start-end]` ranges to address cuts in the EDL.")
     lines.append("")
     for name, duration, phrases in entries:
@@ -197,7 +197,7 @@ def main() -> None:
     total_phrases = sum(len(e[2]) for e in entries)
     total_duration = sum(e[1] for e in entries)
     kb = out_path.stat().st_size / 1024
-    print(f"packed {len(entries)} transcripts → {out_path}")
+    print(f"packed {len(entries)} transcripts -> {out_path}")
     print(f"  {total_phrases} phrases, {format_duration(total_duration)} total runtime")
     print(f"  {kb:.1f} KB")
 
